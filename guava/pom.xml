@@ -127,8 +127,12 @@
           <!-- (We need JDK *sources*, not just -link, so that {@inheritDoc} works.) -->
           <sourcepath>${project.build.sourceDirectory}:${project.build.directory}/jdk-sources</sourcepath>
 
-          <subpackages>com.google.common</subpackages>
-          <excludePackageNames>com.google.common.base.internal</excludePackageNames>
+          <!-- Passing `-subpackages com.google.common` breaks things, so we explicitly exclude everything else instead. -->
+          <!-- excludePackageNames requires specification of packages separately from "all subpackages".
+               https://issues.apache.org/jira/browse/MJAVADOC-584 -->
+          <excludePackageNames>
+            com.google.common.base.internal,com.google.common.base.internal.*,com.google.thirdparty.publicsuffix,com.google.thirdparty.publicsuffix.*,com.oracle.*,com.sun.*,java.*,javax.*,jdk,jdk.*,org.*,sun.*
+          </excludePackageNames>
 
           <!-- TODO(cpovirk): Move this to the parent after making the package-list files available there. -->
           <!-- We add the link ourselves, both so that we can choose Java 9 over the version that -source suggests and so that we can solve the JSR305 problem described below. -->

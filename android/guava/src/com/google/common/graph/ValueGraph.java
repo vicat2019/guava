@@ -156,6 +156,8 @@ public interface ValueGraph<N, V> extends BaseGraph<N> {
   /**
    * Returns the nodes which have an incident edge in common with {@code node} in this graph.
    *
+   * <p>This is equal to the union of {@link #predecessors(Object)} and {@link #successors(Object)}.
+   *
    * @throws IllegalArgumentException if {@code node} is not an element of this graph
    */
   @Override
@@ -188,6 +190,8 @@ public interface ValueGraph<N, V> extends BaseGraph<N> {
 
   /**
    * Returns the edges in this graph whose endpoints include {@code node}.
+   *
+   * <p>This is equal to the union of incoming and outgoing edges.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this graph
    * @since 24.0
@@ -255,7 +259,7 @@ public interface ValueGraph<N, V> extends BaseGraph<N> {
    * throw if the object cannot be present in the collection), and the desire to have this method's
    * behavior be compatible with {@code edges().contains(endpoints)}.
    *
-   * @since NEXT
+   * @since 27.1
    */
   @Override
   boolean hasEdgeConnecting(EndpointPair<N> endpoints);
@@ -281,7 +285,7 @@ public interface ValueGraph<N, V> extends BaseGraph<N> {
    *
    * @throws IllegalArgumentException if either endpoint is not an element of this graph
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since NEXT
+   * @since 27.1
    */
   @NullableDecl
   V edgeValueOrDefault(EndpointPair<N> endpoints, @NullableDecl V defaultValue);

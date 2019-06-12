@@ -408,7 +408,6 @@ public final class Splitter {
    * @return an immutable list of the segments split from the parameter
    * @since 15.0
    */
-  @Beta
   public List<String> splitToList(CharSequence sequence) {
     checkNotNull(sequence);
 
@@ -452,6 +451,7 @@ public final class Splitter {
    * does not change the behavior of the {@code keyValueSplitter}.
    *
    * <p>Example:
+   *
    * <pre>{@code
    * String toSplit = " x -> y, z-> a ";
    * Splitter outerSplitter = Splitter.on(',').trimResults();

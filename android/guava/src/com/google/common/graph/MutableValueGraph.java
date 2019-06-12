@@ -42,8 +42,8 @@ public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
   boolean addNode(N node);
 
   /**
-   * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present, and
-   * sets a value for that edge to {@code value} (overwriting the existing value, if any).
+   * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present, and sets
+   * a value for that edge to {@code value} (overwriting the existing value, if any).
    *
    * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
    * undirected.
@@ -80,6 +80,7 @@ public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * @throws IllegalArgumentException if the introduction of the edge would violate {@link
    *     #allowsSelfLoops()}
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
+   * @since 27.1
    */
   @CanIgnoreReturnValue
   V putEdgeValue(EndpointPair<N> endpoints, V value);
@@ -108,6 +109,7 @@ public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    *
    * @return the value previously associated with the edge connecting {@code endpoints}, or null if
    *     there was no such edge.
+   * @since 27.1
    */
   @CanIgnoreReturnValue
   V removeEdge(EndpointPair<N> endpoints);

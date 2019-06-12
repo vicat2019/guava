@@ -98,6 +98,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @author Bob Lee ({@code com.google.common.collect.MapMaker})
  * @author Doug Lea ({@code ConcurrentHashMap})
  */
+@SuppressWarnings("GoodTime") // lots of violations (nanosecond math)
 @GwtCompatible(emulated = true)
 class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> {
 
@@ -2110,7 +2111,7 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
                     entryKey, hash, value, valueReference.getWeight(), RemovalCause.COLLECTED);
               } else if (map.isExpired(e, now)) {
                 // This is a duplicate check, as preWriteCleanup already purged expired
-                // entries, but let's accomodate an incorrect expiration queue.
+                // entries, but let's accommodate an incorrect expiration queue.
                 enqueueNotification(
                     entryKey, hash, value, valueReference.getWeight(), RemovalCause.EXPIRED);
               } else {
@@ -3563,10 +3564,10 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
       }
       V newValue;
       try {
-         newValue = function.apply(key, previousValue);
+        newValue = function.apply(key, previousValue);
       } catch (Throwable th) {
-         this.setException(th);
-         throw th;
+        this.setException(th);
+        throw th;
       }
       this.set(newValue);
       return newValue;
@@ -3965,6 +3966,7 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
 
   // Only becomes available in Java 8 when it's on the interface.
   // @Override
+  @Override
   public @Nullable V getOrDefault(@Nullable Object key, @Nullable V defaultValue) {
     V result = get(key);
     return (result != null) ? result : defaultValue;

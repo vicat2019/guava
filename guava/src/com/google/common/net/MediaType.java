@@ -426,6 +426,14 @@ public final class MediaType {
    */
   public static final MediaType APPLICATION_BINARY = createConstant(APPLICATION_TYPE, "binary");
 
+  /**
+   * Media type for the <a href="https://tools.ietf.org/html/rfc7946">GeoJSON Format</a>, a
+   * geospatial data interchange format based on JSON.
+   *
+   * @since 28.0
+   */
+  public static final MediaType GEO_JSON = createConstant(APPLICATION_TYPE, "geo+json");
+
   public static final MediaType GZIP = createConstant(APPLICATION_TYPE, "x-gzip");
 
   /**
@@ -448,7 +456,7 @@ public final class MediaType {
    * For <a href="https://tools.ietf.org/html/rfc7515">JWS or JWE objects using the Compact
    * Serialization</a>.
    *
-   * @since NEXT
+   * @since 27.1
    */
   public static final MediaType JOSE = createConstant(APPLICATION_TYPE, "jose");
 
@@ -456,7 +464,7 @@ public final class MediaType {
    * For <a href="https://tools.ietf.org/html/rfc7515">JWS or JWE objects using the JSON
    * Serialization</a>.
    *
-   * @since NEXT
+   * @since 27.1
    */
   public static final MediaType JOSE_JSON = createConstant(APPLICATION_TYPE, "jose+json");
 
@@ -502,7 +510,7 @@ public final class MediaType {
   /**
    * <a href="http://goo.gl/XrTEqG">Microsoft Outlook</a> items.
    *
-   * @since NEXT
+   * @since 27.1
    */
   public static final MediaType MICROSOFT_OUTLOOK =
       createConstant(APPLICATION_TYPE, "vnd.ms-outlook");

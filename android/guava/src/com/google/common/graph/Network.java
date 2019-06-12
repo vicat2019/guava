@@ -159,6 +159,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   /**
    * Returns the nodes which have an incident edge in common with {@code node} in this network.
    *
+   * <p>This is equal to the union of {@link #predecessors(Object)} and {@link #successors(Object)}.
+   *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
   Set<N> adjacentNodes(N node);
@@ -191,6 +193,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   /**
    * Returns the edges whose {@link #incidentNodes(Object) incident nodes} in this network include
    * {@code node}.
+   *
+   * <p>This is equal to the union of {@link #inEdges(Object)} and {@link #outEdges(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -296,7 +300,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    *
    * @throws IllegalArgumentException if either endpoint is not an element of this network
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since NEXT
+   * @since 27.1
    */
   Set<E> edgesConnecting(EndpointPair<N> endpoints);
 
@@ -325,7 +329,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    *     to {@code nodeV}
    * @throws IllegalArgumentException if either endpoint is not an element of this network
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since NEXT
+   * @since 27.1
    */
   @NullableDecl
   E edgeConnectingOrNull(EndpointPair<N> endpoints);
@@ -350,7 +354,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * consistency with {@link Graph#hasEdgeConnecting(EndpointPair)} and {@link
    * ValueGraph#hasEdgeConnecting(EndpointPair)}.
    *
-   * @since NEXT
+   * @since 27.1
    */
   boolean hasEdgeConnecting(EndpointPair<N> endpoints);
 

@@ -127,6 +127,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.UUID;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -214,6 +215,7 @@ public final class ArbitraryInstances {
           .put(OptionalInt.class, OptionalInt.empty())
           .put(OptionalLong.class, OptionalLong.empty())
           .put(OptionalDouble.class, OptionalDouble.empty())
+          .put(UUID.class, UUID.randomUUID())
           // common.base
           .put(CharMatcher.class, CharMatcher.none())
           .put(Joiner.class, Joiner.on(','))
@@ -480,6 +482,7 @@ public final class ArbitraryInstances {
   // Compare by toString() to satisfy 2 properties:
   // 1. compareTo(null) should throw NullPointerException
   // 2. the order is deterministic and easy to understand, for debugging purpose.
+  @SuppressWarnings("ComparableType")
   private static final class ByToString implements Comparable<Object>, Serializable {
     private static final ByToString INSTANCE = new ByToString();
 
